@@ -29,6 +29,7 @@ if(rst) begin
   err<=0; end
 else if(mode) begin
    case(cmd)
+     
     4'b0000:
 if(inp_valid==2'b11) begin
 res<=opa+opb;
@@ -36,6 +37,7 @@ cout<=res[9]; end
 else begin
 err<=1;
 res<=0; end
+     
     4'b0001:
 if(inp_valid==2'b11) begin
 res<=opa-opb;
@@ -43,6 +45,7 @@ cout<=res[9]; end
 else begin
 err<=1;
 res<=0; end
+     
     4'b0010:
 if(inp_valid==2'b11) begin
 res<=opa+opb+cin;
@@ -50,6 +53,7 @@ cout<=res[9]; end
 else begin
 err<=1;
 res<=0; end
+     
     4'b0011:
 if(inp_valid==2'b11) begin
 res<=opa-opb-cin;
@@ -57,30 +61,35 @@ cout<=res[9]; end
 else begin
 err<=1;
 res<=0; end
+     
     4'b0100:
 if(inp_valid)
 res<=opa+1;
 else begin
 err<=1;
 res<=0; end
+     
     4'b0101:
 if(inp_valid)
 res<=opa-1;
 else begin
 err<=1;
 res<=0; end
+     
     4'b0110:
 if(inp_valid==2'b10)
 res<=opb+1;
 else begin
 err<=1;
 res<=0; end
+     
     4'b0111:
 if(inp_valid==2'b10)
 res<=opb-1;
 else begin
 err<=1;
 res<=0; end
+     
     4'b1000:
 if(inp_valid==2'b11) begin
        if(opa>opb)
@@ -92,6 +101,7 @@ if(inp_valid==2'b11) begin
    else begin
       err<=1;
       res<=0; end
+     
     4'b1001:
 if(inp_valid==2'b11) begin
  if(cnt==3)
@@ -108,6 +118,7 @@ res<=(opa<<1)*opb;
 else begin
 err<=1;
 res<=0; end
+     
     4'b1011:
 if(inp_valid==2'b11) begin
 res<=$signed(opa)+$signed(opb);
@@ -117,6 +128,7 @@ else oflow<=0; end
 else begin
 err<=1;
 res<=0; end
+     
     4'b1100:
 if(inp_valid==2'b11) begin
 res<=$signed(opa)-$signed(opb);
@@ -137,75 +149,87 @@ res<=opa&opb;
 else begin
 err<=1;
 res<=0; end
+     
     4'b0001:
 if(inp_valid==2'b11)
 res<=~(opa&opb);
 else begin
 err<=1;
 res<=0; end
+     
     4'b0010:
 if(inp_valid==2'b11)
 res<=opa|opb;
 else begin
 err<=1;
 res<=0; end
+     
     4'b0011:
 if(inp_valid==2'b11)
 res<=~(opa|opb);
 else begin
 err<=1;
 res<=0; end
+     
     4'b0100:
 if(inp_valid==2'b11)
 res<=opa^opb;
 else begin
 err<=1;
 res<=0; end
+     
     4'b0101:
 if(inp_valid==2'b11)
 res<=~(opa^opb);
 else begin
 err<=1;
 res<=0; end
+     
     4'b0110:
 if(inp_valid==2'b01)
 res<=~opa;
 else begin
 err<=1;
 res<=0; end
+     
     4'b0111:
 if(inp_valid==2'b10)
 res<=~opb;
 else begin
 err<=1;
 res<=0; end
+     
     4'b1000:
 if(inp_valid==2'b01)
 res<=opa>>1;
 else begin
 err<=1;
 res<=0; end
+     
     4'b1001:
 if(inp_valid==2'b01)
 res<=opa<<1;
 else begin
 err<=1;
 res<=0; end
+     
     4'b1010:
 if(inp_valid==2'b10)
 res<=opb>>1;
 else begin
 err<=1;
 res<=0; end
+     
     4'b1011:
 if(inp_valid==2'b10)
 res<=opb<<1;
 else begin
 err<=1;
 res<=0; end
+     
     4'b1100:
-if(inp_valid==2'b10) begin
-casex(opb) 
+if(inp_valid==2'b11) begin
+      casex(opb) 
        8'b0000x000:res=opa;
        8'b0000x001:res={opa[6:0],opa[7]};
        8'b0000x010:res={opa[5:0],opa[7:6]};
@@ -219,8 +243,9 @@ casex(opb)
 else begin
 err<=1;
 res<=0; end
+     
     4'b1101:
-if(inp_valid==2'b10) begin
+if(inp_valid==2'b11) begin
       casex(opb) 
        8'b0000x000:res=opa;
        8'b0000x001:res={opa[0],opa[7:1]};
