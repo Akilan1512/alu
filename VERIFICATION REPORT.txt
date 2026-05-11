@@ -1,0 +1,28 @@
+VERIFICATION REPORT:
+
+Final Count:
+
+Total testcases: 142
+Passed: 111
+Failed: 31
+
+Breakdown:
+
+Arithmetic mode (M=1):
+Total: 70
+Passed: 53
+Failed: 17
+
+Logic mode (M=0):
+Total: 72
+Passed: 58
+Failed: 14
+
+The design is working with 78% pass rate.
+
+Major failures are concentrated in:
+
+1) Signed arithmetic (SADD, SSUB)
+2) Multiplication
+3) COUT behavior in subtraction/overflow cases
+4) Bitwise logic (NAND, NOR, XNOR, NOT) → masking/sign-extension issue
