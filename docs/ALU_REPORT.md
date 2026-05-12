@@ -1,0 +1,1 @@
+[ALU_DESIGN_VER_REPORT](https://drive.google.com/file/d/1DyfXNGGRIPiC0D_M9P4Qy07A1nPMIKaL/view?usp=drive_link)
